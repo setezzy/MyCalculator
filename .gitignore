@@ -4,7 +4,8 @@
 
     # filter idea file
     *.iml
+    */*.iml
 
     #filter idea dir
-    /.idea/
+    .idea/
     /out/
