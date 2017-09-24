@@ -1,5 +1,8 @@
 # MyCalculator
 自动生成小学生四则运算题目
+
+运行：java -jar MyCalculator.jar -n
+
 功能：
 1.用户自定义题目数量
 2.随机生成操作数和运算符，其个数在一定区间随机生成
