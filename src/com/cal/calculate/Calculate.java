@@ -73,13 +73,29 @@ public class Calculate {
     /*-------------提取操作数-------------*/
     private static List<String> Figure(String fig){
         int n = 0;
+        int count=0;
+        int k=0;
         List<String> list = new ArrayList<>();
-        for (int i = 0; i < fig.length(); i++) {
+        for(int i=0;i<fig.length();i++){
             if (fig.charAt(i) == '+' || fig.charAt(i) == '-'
                     || fig.charAt(i) == '*' || fig.charAt(i) == '÷'
                     || fig.charAt(i) == '=') {
-                list.add(fig.substring(n, i));
-                n = i + 1;
+                k=i;           //运算符的index
+                count++;
+            }
+        }
+        if(count==1){
+            list.add(fig.substring(0,k));
+            list.add(fig.substring(k+1,fig.length()));
+        }
+        else {
+            for (int i = 0; i < fig.length(); i++) {
+                if (fig.charAt(i) == '+' || fig.charAt(i) == '-'
+                        || fig.charAt(i) == '*' || fig.charAt(i) == '÷'
+                        || fig.charAt(i) == '=') {
+                    list.add(fig.substring(n, i));
+                    n = i + 1;
+                }
             }
         }
         return list;
