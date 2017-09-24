@@ -19,13 +19,27 @@ public class Display {
         List<String> expression = new ArrayList<>();
         List<String> result = new ArrayList<>();
         System.out.println("本次共"+num+"题，满分"+num*10+"分");
+        String exp;
         for(i=0;i<num;i++){
-            String exp = CreateExp.exp((int) ((Math.random() * 100) % 4 + 3));  //运算符数目在[3,6]范围内
+            do {
+                exp = CreateExp.exp((int) ((Math.random() * 100) % 4 + 3));  //运算符数目在[3,6]范围内
+                ans = NewCalculate.newcalculate(exp);
+            }while(ans.contains("-"));
             expression.add(exp);
-            ans = NewCalculate.newcalculate(exp);
             System.out.println("第" + (i + 1) + "道题：" + exp);
             Scanner scanner = new Scanner(System.in);
-            String input = scanner.nextLine();           //读取用户输入
+            String input;
+            while(true) {
+                try {
+                    input = scanner.nextLine();           //读取用户输入
+                    if (input.matches("^[A-Za-z]+$")) throw new Exception();
+                }catch (Exception e){
+                    System.out.println("请重新输入");
+                    continue;
+                }
+                break;
+
+            }
             ans = Simplify.gcd(ans);
             result.add(ans);
             if(input.equals(ans)){
