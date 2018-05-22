@@ -1,4 +1,3 @@
-# MyCalculator
 
 运行：java -jar MyCalculator.jar -n
 
